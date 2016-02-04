@@ -129,7 +129,8 @@ RUN buildDeps=" \
 COPY ./root/ /
 
 RUN chmod -R 775 /etc/init.d \
-    && ln -s /usr/local/damp/scripts/* /usr/local/bin/
+    && ln -s /usr/local/damp/scripts/* /usr/local/bin/ \
+    && bash /usr/local/damp/docker/setup
 
 EXPOSE 80
 
