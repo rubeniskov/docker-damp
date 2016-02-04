@@ -1,0 +1,18 @@
+#!/bin/bash
+
+SELF=$(cd $(dirname $0); pwd -P)/$(basename $0)
+
+#
+# main()
+#
+
+case "${1:-''}" in
+  'start'|'stop'|'restart'|'reload'|'force-reload'|'status')
+    service apache2 "${1:-''}"
+    service mysql "${1:-''}"
+    ;;
+  *)
+    echo "Usage: $SELF start|stop|restart|reload|force-reload|status"
+    exit 1
+    ;;
+esac
