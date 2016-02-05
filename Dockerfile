@@ -12,7 +12,7 @@ RUN apt-get update -y \
     && apt-get install -y perl --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update -y \ 
+RUN apt-get update -y \
     && apt-get install -y libaio1 pwgen \
     && rm -rf /var/lib/apt/lists/*
 
@@ -128,7 +128,8 @@ RUN buildDeps=" \
 
 COPY ./root/ /
 
-RUN chmod -R 775 /etc/init.d \
+RUN chmod -R 775 /etc/init.d/* \
+    && chmod -R 755 /usr/local/damp/scripts/* \
     && ln -s /usr/local/damp/scripts/* /usr/local/bin/ \
     && bash /usr/local/damp/docker/setup
 
